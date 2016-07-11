@@ -12,10 +12,10 @@ This project requires **Python 2.7** with the [pygame](https://www.pygame.org/wi
 
 In a terminal or command window, navigate to the top-level project directory `smartcab/` (that contains this README) and run the following commands:
 
-```$ git clone http://github.com/adityasiwan/Machinelearning-smartcar.git```
-```$ cd smartcar```
-```python smartcab/agent.py```  
+`$ git clone http://github.com/adityasiwan/Machinelearning-smartcar.git`
+`$ cd smartcar`
+`python smartcab/agent.py`  
 			OR
-```python -m smartcab.agent```
+`python -m smartcab.agent`
 
 This will run the `agent.py` file and execute your agent code.
