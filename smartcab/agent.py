@@ -11,6 +11,17 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
         # TODO: Initialize any additional variables here
+        #Actions
+        self.A = ['forward', 'left', 'right', None] #all the actions available
+        self.trial = 0
+
+        #Initialize Q table(light, oncoming_agent, next_waypoint)
+        self.Q={}
+        for i in ['green', 'red']:  #possible lights
+            for j in [None, 'forward', 'left', 'right']: #possible oncoming_agent
+                for k in ['forward', 'left', 'right']: #possible next_waypoints
+                    self.Q[(i,j,k)] = [1] * len(self.A)
+
 
     def reset(self, destination=None):
         self.planner.route_to(destination)
@@ -23,7 +34,7 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # TODO: Update state
-        
+
         # TODO: Select action according to your policy
         action = None
 
