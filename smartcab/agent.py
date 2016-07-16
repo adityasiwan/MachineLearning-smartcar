@@ -15,7 +15,7 @@ class LearningAgent(Agent):
         self.A = ['forward', 'left', 'right', None] #all the actions available
         self.trial = 0
 
-        #Initialize Q table(light, oncoming_agent, next_waypoint)
+        #Initialize Q table(light, oncoming, next_waypoint)
         self.Q={}
         for i in ['green', 'red']:  #possible lights
             for j in [None, 'forward', 'left', 'right']: #possible oncoming_agent
@@ -34,14 +34,7 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # TODO: Update state
-
-        # TODO: Select action according to your policy
-        action = None
-
-        # Execute action and get reward
-        reward = self.env.act(self, action)
-
-        # TODO: Learn policy based on state, action, reward
+        self.state = (inputs['light'], inputs['oncoming'], self.next_waypoint)
 
         print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
@@ -56,11 +49,8 @@ def run():
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.5, display=True)  # create simulator (uses pygame when display=True, if available)
-    # NOTE: To speed up simulation, reduce update_delay and/or set display=False
-
+    sim = Simulator(e, update_delay=0.8, display=True)  # create simulator (uses pygame when display=True, if available)
     sim.run(n_trials=100)  # run for a specified number of trials
-    # NOTE: To quit midway, press Esc or close pygame window, or hit Ctrl+C on the command-line
 
 
 if __name__ == '__main__':
