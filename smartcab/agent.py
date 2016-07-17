@@ -35,6 +35,8 @@ class LearningAgent(Agent):
 
         # TODO: Update state
         self.state = (inputs['light'], inputs['oncoming'], self.next_waypoint)
+        #Find the max Q value for the current state
+        max_Q = self.Q[self.state].index(max(self.Q[self.state]))
 
         print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
