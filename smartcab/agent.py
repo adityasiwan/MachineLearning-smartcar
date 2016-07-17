@@ -38,6 +38,16 @@ class LearningAgent(Agent):
         #Find the max Q value for the current state
         max_Q = self.Q[self.state].index(max(self.Q[self.state]))
 
+        #assign action
+        p = random.randrange(0,8)
+        theta = 1.5
+        if p<theta:
+            action = random.choice(self.env.valid_actions)
+        else:
+            action = self.A[max_Q]
+        # Execute action and get reward
+        reward = self.env.act(self, action)
+
         print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
 
