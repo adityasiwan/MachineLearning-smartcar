@@ -62,7 +62,7 @@ class LearningAgent(Agent):
         (1-alpha)*self.Q[self.state][self.A.index(action)] + \
         (alpha * (reward + gamma * max(self.Q[next_state])))
 
-        print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
+        #print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
 
 def run():
@@ -77,6 +77,10 @@ def run():
     # Now simulate it
     sim = Simulator(e, update_delay=0.8, display=True)  # create simulator (uses pygame when display=True, if available)
     sim.run(n_trials=100)  # run for a specified number of trials
+    ## print Q table
+    for key in a.Q:
+        print key,
+        print ["%0.2f" % i for i in a.Q[key]]
 
 
 if __name__ == '__main__':
