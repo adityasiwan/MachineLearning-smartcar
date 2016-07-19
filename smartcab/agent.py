@@ -57,6 +57,11 @@ class LearningAgent(Agent):
         next_next_waypoint = self.planner.next_waypoint()
         next_state = (next_inputs['light'],next_inputs['oncoming'], next_next_waypoint)
 
+        #Update Q Table
+        self.Q[self.state][self.A.index(action)] = \
+        (1-alpha)*self.Q[self.state][self.A.index(action)] + \
+        (alpha * (reward + gamma * max(self.Q[next_state])))
+
         print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
 
 
