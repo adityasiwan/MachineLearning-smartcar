@@ -49,7 +49,7 @@ class LearningAgent(Agent):
         reward = self.env.act(self, action)
 
         # TODO: Learn policy based on state, action, reward
-        gamma = 0.25
+        gamma = 0.30
         alpha = 0.50
 
         #get the next action state Q(s',a')
