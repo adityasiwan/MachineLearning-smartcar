@@ -50,7 +50,9 @@ class LearningAgent(Agent):
 
         # TODO: Learn policy based on state, action, reward
         gamma = 0.30
-        alpha = 0.50
+        alp_tune =500 # tunning parameter
+        alpha = 1/(1.1+self.trial/alp_tune) # decay learning rate
+        self.trial = self.trial+1
 
         #get the next action state Q(s',a')
         next_inputs = self.env.sense(self)
