@@ -39,9 +39,9 @@ class LearningAgent(Agent):
         max_Q = self.Q[self.state].index(max(self.Q[self.state]))
 
         #assign action
-        p = random.randrange(0,8)
-        theta = 1.5
-        if p<theta:
+        p = random.randrange(0,5)
+        epsilon = 1.5 # small probability to act randomly
+        if p<epsilon:
             action = random.choice(self.env.valid_actions)
         else:
             action = self.A[max_Q]
@@ -77,7 +77,7 @@ def run():
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.8, display=True)  # create simulator (uses pygame when display=True, if available)
+    sim = Simulator(e, update_delay=0.000000001, display=True)  # create simulator (uses pygame when display=True, if available)
     sim.run(n_trials=100)  # run for a specified number of trials
     ## print Q table
     for key in a.Q:
