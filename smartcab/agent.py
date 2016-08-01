@@ -77,7 +77,7 @@ def run():
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.000000001, display=True)  # create simulator (uses pygame when display=True, if available)
+    sim = Simulator(e, update_delay=1.0, display=True)  # create simulator (uses pygame when display=True, if available)
     sim.run(n_trials=100)  # run for a specified number of trials
     ## print Q table
     for key in a.Q:
